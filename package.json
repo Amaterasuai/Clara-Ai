@@ -1,0 +1,164 @@
+{
+  "name": "clara-ollama",
+  "private": true,
+  "version": "1.0.5",
+  "description": "Clara – A privacy-first, client-side AI assistant WebUI for Ollama. No backend, no data leaks. Keep your conversations completely yours, If you like it, Don't Forget to Give a Star 🌟",
+  "author": {
+    "name": "badboysm890",
+    "email": "praveensm890@gmail.com"
+  },
+  "type": "module",
+  "main": "electron/main.cjs",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "test": "npx vitest run",
+    "test:watch": "npx vitest",
+    "test:ui": "npx vitest --ui",
+    "test:coverage": "npx vitest run --coverage",
+    "test:ci": "npx vitest run --coverage --reporter=json --outputFile=./test-results.json",
+    "electron:dev": "concurrently \"cross-env ELECTRON_START_URL=http://localhost:5173 npm run dev\" \"wait-on http://localhost:5173 && cross-env NODE_ENV=development electron .\"",
+    "electron:build-all": "npm run build && electron-builder --mac --win --linux",
+    "electron:build": "npm run build && electron-builder",
+    "electron:preview": "npm run build && electron .",
+    "electron:build-mac": "npm run build && electron-builder --mac --universal",
+    "electron:build-mac-dev": "npm run build && electron-builder --mac --universal",
+    "electron:build-win": "npm run build && electron-builder --win",
+    "electron:build-win-admin": "node scripts/build-win-admin.cjs",
+    "cleanup:win": "node scripts/cleanup-win.cjs",
+    "electron:clean-build-win": "npm run cleanup:win && npm run electron:build-win",
+    "package": "npm run build && electron-builder build --publish always",
+    "package:mac-unsigned": "npm run build && electron-builder build -c.mac.identity=null --publish never",
+    "electron:build-mac-publish": "npm run build && electron-builder --mac --universal --publish always",
+    "docker:check-env": "node -e \"if(!process.env.DOCKER_USERNAME) { console.error('Error: DOCKER_USERNAME environment variable is not set.\\nPlease set it using: export DOCKER_USERNAME=your-username'); process.exit(1); }\"",
+    "docker:build": "if [ -z \"$DOCKER_USERNAME\" ]; then docker build -t clara-ollama:latest .; else docker build -t $DOCKER_USERNAME/clara-ollama:latest .; fi",
+    "docker:run": "if [ -z \"$DOCKER_USERNAME\" ]; then docker run -p 8069:8069 clara-ollama:latest; else docker run -p 8069:8069 $DOCKER_USERNAME/clara-ollama:latest; fi",
+    "docker:login": "docker login",
+    "docker:push": "npm run docker:check-env && docker push $DOCKER_USERNAME/clara-ollama:latest",
+    "docker:all": "npm run docker:check-env && npm run docker:login && npm run docker:build && npm run docker:push",
+    "docker:publish": "chmod +x ./docker-publish.sh && ./docker-publish.sh"
+  },
+  "dependencies": {
+    "@langchain/core": "^0.3.42",
+    "@saintno/comfyui-sdk": "^0.2.45",
+    "@stable-canvas/comfyui-client": "^1.4.1",
+    "@stable-canvas/comfyui-client-cli": "latest",
+    "dotenv": "^16.4.7",
+    "electron-log": "^5.3.2",
+    "electron-updater": "^6.3.9",
+    "inquirer": "^12.4.3",
+    "langchain": "^0.3.19",
+    "lucide-react": "^0.344.0",
+    "ollama": "^0.5.14",
+    "openai": "^4.87.3",
+    "prismjs": "^1.30.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-icons": "^5.5.0",
+    "react-image-crop": "^11.0.7",
+    "react-markdown": "^9.0.1",
+    "react-syntax-highlighter": "^15.6.1",
+    "reactflow": "^11.11.4",
+    "remark-gfm": "^4.0.0",
+    "ws": "^8.18.1",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@electron/notarize": "^3.0.0",
+    "@eslint/js": "^9.9.1",
+    "@tailwindcss/typography": "^0.5.10",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^14.3.1",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/react": "^18.3.5",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "@vitest/coverage-v8": "^1.6.1",
+    "@vitest/ui": "^1.6.1",
+    "autoprefixer": "^10.4.18",
+    "concurrently": "^9.1.2",
+    "cross-env": "^7.0.3",
+    "electron": "^35.0.1",
+    "electron-builder": "^25.1.8",
+    "eslint": "^9.9.1",
+    "eslint-plugin-react-hooks": "^5.1.0-rc.0",
+    "eslint-plugin-react-refresh": "^0.4.11",
+    "globals": "^15.9.0",
+    "jsdom": "^23.2.0",
+    "postcss": "^8.4.35",
+    "rimraf": "^5.0.10",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5.5.3",
+    "typescript-eslint": "^8.3.0",
+    "vite": "^5.4.2",
+    "vitest": "^1.6.1",
+    "wait-on": "^8.0.3"
+  },
+  "build": {
+    "appId": "com.clara-ai.app",
+    "productName": "Clara",
+    "files": [
+      "dist/**/*",
+      "electron/**/*"
+    ],
+    "directories": {
+      "buildResources": "assets",
+      "output": "release"
+    },
+    "publish": {
+      "provider": "github",
+      "owner": "badboysm890",
+      "repo": "ClaraVerse",
+      "releaseType": "release",
+      "private": false
+    },
+    "mac": {
+      "category": "public.app-category.developer-tools",
+      "icon": "assets/icons/mac/icon.icns",
+      "hardenedRuntime": true,
+      "gatekeeperAssess": false,
+      "entitlements": "assets/entitlements.mac.plist",
+      "entitlementsInherit": "assets/entitlements.mac.plist",
+      "target": [
+        {
+          "target": "default",
+          "arch": [
+            "universal"
+          ]
+        }
+      ],
+      "notarize": true,
+      "darkModeSupport": true,
+      "artifactName": "${productName}-${version}-universal.${ext}",
+      "type": "distribution"
+    },
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "icon": "assets/icons/win/icon.ico"
+    },
+    "linux": {
+      "target": [
+        "deb",
+        "AppImage"
+      ],
+      "category": "Development",
+      "icon": "assets/icons/png",
+      "desktop": {
+        "StartupNotify": "false",
+        "Encoding": "UTF-8",
+        "MimeType": "x-scheme-handler/clara"
+      },
+      "artifactName": "${productName}-${version}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true
+    },
+    "afterSign": null
+  }
+}
