@@ -185,4 +185,4 @@ npm run electron:build
 
 ## 🤝 Support & Contact
 
-Have questions or need help? Reach out via **praveensm890@gmail.com**.
+four.meme
