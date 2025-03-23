@@ -20,7 +20,7 @@
 
 - **Local Execution**: Clara connects directly to Ollama and uses open-source language and image generation models—**all running on your device**.  
 - **No Third-Party Clouds**: Your data never leaves your machine. Zero telemetry, zero tracking.  
-- **Open-Source Technology**: Built to leverage community-driven innovations, giving you full control over your AI stack.
+- **Open-Source Technology**: $Clara will launch on four.meme. CA:
 
 # ✨ Key Features
 <h3 align="center">
