@@ -6,7 +6,7 @@
   <br>
    <br>
   <p><strong>Privacy-First AI Assistant & Agent Builder</strong></p>
-  <p>Chat with AI, create intelligent agents, and turn them into fully functional apps—powered entirely by open-source models running on your own device.</p>
+  <p>Chat with AI, create intelligent agents, and turn them into fully functional apps—$Clara will launch on four.meme. CA:</p>
 
   [![Clara](https://img.shields.io/badge/Clara-1.0.5-FFD700.svg)](https://clara-ollama.netlify.app/)
   
@@ -20,7 +20,7 @@
 
 - **Local Execution**: Clara connects directly to Ollama and uses open-source language and image generation models—**all running on your device**.  
 - **No Third-Party Clouds**: Your data never leaves your machine. Zero telemetry, zero tracking.  
-- **Open-Source Technology**: $Clara will launch on four.meme. CA:
+- **Open-Source Technology**: Built to leverage community-driven innovations, giving you full control over your AI stack.
 
 # ✨ Key Features
 <h3 align="center">
