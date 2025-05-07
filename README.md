@@ -6,7 +6,7 @@
   <br>
    <br>
   <p><strong>Privacy-First AI Assistant & Agent Builder</strong></p>
-  <p>Chat with AI, create intelligent agents, and turn them into fully functional apps—$Clara will launch on pumpfun. CA:</p>
+  <p>Chat with AI, create intelligent agents, and turn them into fully functional apps—$Clara will launch on pumpfun. CA:9w12SzAMQwoC1bvYJWsJDbyUa9wNDvAJ47gDJNd1pump</p>
 
   [![Clara](https://img.shields.io/badge/Clara-1.0.5-FFD700.svg)](https://clara-ollama.netlify.app/)
   
