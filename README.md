@@ -6,7 +6,7 @@
   <br>
    <br>
   <p><strong>Privacy-First AI Assistant & Agent Builder</strong></p>
-  <p>Chat with AI, create intelligent agents, and turn them into fully functional apps—$Clara will launch on four.meme. CA:https://four.meme/token/0xa07f1fef29e6c102192035987a2399c799b184bd</p>
+  <p>Chat with AI, create intelligent agents, and turn them into fully functional apps—$Clara will launch on four.meme. CA:</p>
 
   [![Clara](https://img.shields.io/badge/Clara-1.0.5-FFD700.svg)](https://clara-ollama.netlify.app/)
   
